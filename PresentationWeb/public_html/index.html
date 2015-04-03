@@ -1,0 +1,278 @@
+<html>
+    <head>
+        <title>Maps on Demand</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.poptrox.min.js"></script>
+        <script src="js/jquery.scrolly.min.js"></script>
+        <script src="js/jquery.scrollex.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/init.js"></script>
+        <noscript>
+
+        </noscript>
+        <!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    </head>
+
+
+    <body>
+        <script>
+
+
+            function notify(evt) {
+
+                console.log('#' + evt.target.id);
+                var loc = '#' + evt.target.id;
+
+                $('html, body').animate({
+                    scrollTop: $(loc).offset().top
+                }, 2000);
+            }
+
+
+        </script>
+
+
+
+        <!-- Header -->
+        <header id="header">
+
+            <!-- Logo -->
+            <h1 id="logo">Maps on Demand</h1>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <li><a href="#intro">Intro</a></li>
+                    <li><a href="#one">Goals</a></li>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                </ul>
+            </nav>
+
+        </header>
+
+        <!-- Intro -->
+        <section id="intro" class="main style1 fullscreen">
+            <div class="content container 75%">
+                <header>
+                    <h2>Maps on Demand</h2>
+                </header>
+                <p>A <strong>Service</strong> orientated approach to dynamic map creation</p>
+                <div >
+                    <div><img src="images/fulls/stantecresized.png" alt="Stantec Logo"/></div>
+                </div>
+                <div >
+                    <div><img src="images/fulls/usace_logo.png" alt="USACE Logo"/></div>
+                </div>
+                <footer>
+                    <a href="#one" class="button style2 down">More</a>
+                </footer>
+            </div>
+        </section>
+
+        <!-- One -->
+        <section id="one" class="main style2 right dark fullscreen">
+            <div class="content box style2">
+                <header>
+                    <h2>Goals</h2>
+                </header>
+                <p>The Goals of this project was to allow a user to dynamically create their own map atlas depending on their needs at the time of creation. We wanted the web site to perform most if not all of the data crunching on the browsing and be abstract enough to be easily implemented into any previous web site. </p>
+            </div>
+            <a href="#overview" class="button style2 down anchored">Next</a>
+        </section>
+
+        <!-- Overview -->
+        <section id="overview" class="main style1 left dark fullscreen">
+            <div class="content container 100%">
+
+                <object data="images/Overview.svg" type="image/svg+xml" >
+
+                </object>
+
+            </div>
+            <a href="#resources" class="button style2 down anchored">Next</a>
+        </section>
+
+
+
+        <!-- UserDrawnGrid -->
+
+        <section id="userdrawngrid" class="main style4 left dark ">
+            <div class="content container 80%">
+
+                <header>
+                    <h2>User Draws Grid</h2>
+                    <p>Using the OpenLayers draw tool the user can draw the area on the map they wish to export as a map Atlas</p>
+                </header>
+
+                <div class="container 75% gallery">
+                    <div class="row 0% images">
+                        <div class="6u"><a href="images/fulls/draw.gif" class="image fit from-right"><img src="images/thumbs/draw.png" title="User Defined Area" alt="" /></a></div>
+                        <div class="6u"><a href="images/fulls/Createfirstgrid.png" class="image fit from-left"><img src="images/thumbs/Createfirstgrid.png" title="First Grid Creation" alt="" /></a></div>
+                    </div>
+
+                </div>
+                <br>
+                <p>Since the starting point of the grids are based off the bounding box coordinates of the user drawn polygon the code will then run a Hit Test on the user drawn polygon and remove any grids that don't intersect using JSClipper</p>
+                <p> The remaining grid coordinates will then be posted to the REST interface and the service will run a Hit Test on the geometries in the Database. The service will return only the id of the grid and either True or False</p>
+                <p>The web site will then remove any grids that returned a false and display the created grids to the user</p>
+
+
+
+
+            </div>
+            <a href="#overview" class="button style2 down anchored">Next</a>
+
+        </section>
+
+        <!-- createconfigfile -->
+
+        <section id="createconfigfile" class="main style4 left dark">
+            <div class="content container 80%">
+
+                <header>
+                    <h2>Creating the config file and Server side logic</h2>
+
+                </header>
+                <p>After the user adds optional information, such as basemap, additional emails, and notes, the website will post the data back to the server as a stringified JSON</p>
+                <div class="container 50% gallery">
+                    <div class="row 0% images">
+                        <div class="6u"><a href="images/fulls/iwrssclass.png" class="image fit from-top"><img src="images/thumbs/iwrssclass.png" title="Final Screen" alt="" /></a></div>
+                        <div class="6u"><a href="images/fulls/iwrssendpoint.png" class="image fit from-left"><img src="images/thumbs/iwrssendpoint.png" title="Example Post" alt="" /></a></div>
+                    </div>
+
+                </div>
+                <p>Using the google-gson library the service will parse the string into a class that will hold our data to be used by a buffered writer to write out a control file</p>
+
+                <div class="container 50% gallery">
+                    <div class="row 0% images">
+                      <div class="6u"><a href="images/fulls/iwrssendpoint.png" class="image fit from-right"><img src="images/thumbs/iwrssendpoint.png" title="REST Endpoint" alt="" /></a></div>
+                        <div class="6u"><a href="images/fulls/iwrssclass.png" class="image fit from-left"><img src="images/thumbs/iwrssclass.png" title="Class to hold Configuration Data" alt="" /></a></div>
+
+                    </div>
+                </div>
+                <p>Depending on the type of map the user wants the config file will point to different available templates</p>
+                <p>The service will then start the python scripts using the config file as a parameter</p>
+                <div class="container 50% gallery">
+                    <div class="row 0% images">
+                        <div class="6u"><a href="images/fulls/folderstructure.png" class="image fit from-right"><img src="images/thumbs/folderstructure.png" title="Folder Structure" alt="" /></a></div>
+                        <div class="6u"><a href="images/fulls/configfile.png" class="image fit from-bottom"><img src="images/thumbs/configfile.png" title="Example Config File" alt="" /></a></div>
+                    </div>
+                </div>
+
+            </div>
+            <a href="#overview" class="button style2 down anchored">Next</a>
+
+        </section>
+        <section id="pythonscripts" class="main style4 left dark">
+            <div class="content container">
+
+                <header>
+                    <h2>Python Scripts to create Map Pages</h2>
+
+                </header>
+                <p>The python script will start and read/parse the config file. </p>
+                <div class="container 25% gallery">
+                    <div class="row 0% images">
+                        <div class="6u"><a href="images/fulls/pythonfiles.png" class="image fit from-top"><img src="images/thumbs/pythonfiles.png" title="Script Directory" alt="" /></a></div>
+                        <div class="6u"><a href="images/fulls/main.png" class="image fit from-right"><img src="images/thumbs/main.png" title="Main" alt="" /></a></div>
+                    </div>
+
+                </div>
+                <p>The main python script(_mapbook_main) utilizes the python multiproccesing module for the creation of the individual map pages. The script will parse the geojson of the created map grids and pull the page numbers to divide them up evenly depending on the number of processors the config file has listed</p>
+
+                <div class="container 25% gallery">
+                    <div class="row 0% images">
+                        <div class="6u"><a href="images/fulls/mapbook_main.png" class="image fit from-left"><img src="images/thumbs/mapbook_main.png" title="Sorting Geojson Grid Features into Jobs" alt="" /></a></div>
+                    </div>
+                </div>
+                <p>The python script for creating the index sheet and map book pages will use arcpy to create in memory feature classes using the coordinates listed in the Geojson to be exported with the map. For layers that are already stored in the database the templates utilize Query layers and the python script will update the query to reflect the chosen data.</p>
+                <div class="container 25% gallery">
+                    <div class="row 0% images">
+                        <div class="6u"><a href="images/fulls/featureclasscreation.png" class="image fit from-left"><img src="images/thumbs/featureclasscreation.png" title="Feature Class" alt="" /></a></div>
+                        <div class="6u"><a href="images/fulls/querylayer.png" class="image fit from-right"><img src="images/thumbs/querylayer.png" title="Example Config File" alt="" /></a></div>
+                    </div>
+                </div>
+                <p> Text box data such as page numbers will update using the information from the config file and the parsed geojson</p>
+                <div class="container 25% gallery">
+                    <div class="row 0% images">
+                        <div class="6u"><a href="images/fulls/textupdates1.png" class="image fit from-bottom"><img src="images/thumbs/textupdates1.png" title="Updating Title Box Fields" alt="" /></a></div>
+                        <div class="6u"><a href="images/fulls/textupdates2.png" class="image fit from-right"><img src="images/thumbs/textupdates2.png" title="Updating Page Numbers and other Grid specific fields" alt="" /></a></div>
+                    </div>
+                </div>
+
+            </div>
+            <a href="#overview" class="button style2 down anchored">Next</a>
+
+        </section>
+
+
+
+        <!-- Contact -->
+        <section id="resources" class="main style3 secondary fullscreen">
+            <div class="content container">
+                <header>
+                    <h2>Resources</h2>
+                </header>
+                <div class="box container 75%">
+                    <div class="row 0%">
+                        <div class="6u"><p>Stantec</p></div>
+                        <div class="6u"><a href="http://www.stantec.com/">http://www.stantec.com/</a></div>
+                    </div>
+                    <div class="row 0%">
+                        <div class="6u"><p>US Army Corps of Engineers</p></div>
+                        <div class="6u"><a href="http://www.nwk.usace.army.mil/"> http://www.nwk.usace.army.mil/</a></div>
+                    </div>
+                    <div class="row 0%">
+                        <div class="6u"><p>JsClipper </p></div>
+                        <div class="6u"><a href="https://github.com/Delapouite/JsClipper"> https://github.com/Delapouite/JsClipper</a></div>
+                    </div>
+                    <div class="row 0%">
+                        <div class="6u"><p>Play! Framework </p></div>
+                        <div class="6u"><a href="https://www.playframework.com">https://www.playframework.com</a></div>
+                    </div>
+                    <div class="row 0%">
+                        <div class="6u"><p>Spring Framework </p></div>
+                        <div class="6u"><a href="http://projects.spring.io/spring-framework/">http://projects.spring.io/spring-framework/</a></div>
+                    </div>
+                    <div class="row 0%">
+                        <div class="6u"><p>GeoJSON </p></div>
+                        <div class="6u"><a href="http://geojson.org/">http://geojson.org/</a></div>
+                    </div>
+                    <div class="row 0%">
+                        <div class="6u"><p>OpenLayers </p></div>
+                        <div class="6u"><a href="http://openlayers.org/">http://openlayers.org/</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="content container">
+                <header>
+                    <h2>Contact Info</h2>
+                </header>
+                <div class="box container 75%">
+                    <div class="row 0%">
+                        <div class="3u"><p></p></div>
+                        <div class="3u"><p><u><b>Work</b></u></p></div>
+                        <div class="3u"><p><u><b>Email</b></u></p></div>
+                    </div>
+                    <div class="row 0%">
+                        <div class="3u"><p>Brian Mulcahy</p></div>
+                        <div class="3u"><p>913-202-6877</p></div>
+                        <div class="3u"><a href="mailto:Brian.Mulcahy@stantec.com"> Brian.Mulcahy@stantec.com</a></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+    </body>
+</html>
