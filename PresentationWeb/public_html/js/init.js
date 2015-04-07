@@ -18,8 +18,8 @@
             'mobile-narrow': {range: '-480', containers: '95%!', grid: {collapse: true}}
         }
     });
-    
-    
+
+
 
     $(function () {
 
@@ -202,6 +202,7 @@
             popupLoaderText: '',
             windowMargin: (skel.isActive('mobile') ? 5 : 50),
             usePopupNav: true
+
         });
 
         // Section transitions.
@@ -246,7 +247,7 @@
                                 $(this).addClass('inactive');
                             }
                         });
-         
+
 
                 // Work.
                 $('#work')

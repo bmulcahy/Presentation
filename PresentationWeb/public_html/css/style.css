@@ -19,7 +19,7 @@ html {
 body {
     background: #fff;
     height: 100%;
-    
+
 }
 
 body.is-loading *,
@@ -499,7 +499,7 @@ input[type="reset"].style2:hover,
 .main {
     position: relative;
     margin: 0;
-    
+
 }
 
 .main.fullscreen {
@@ -625,7 +625,7 @@ input[type="reset"].style2:hover,
 }
 
 .main.style3 .content > header {
-    
+
     margin-top: 1em;
 }
 
@@ -640,7 +640,7 @@ input[type="reset"].style2:hover,
 .main.style4 {
     text-align: center;
     padding: 3em 0 0 0;
-    
+
 }
 .main.style4 h2 {
     text-align: center;
@@ -671,7 +671,7 @@ input[type="reset"].style2:hover,
     padding: 0 0 5em 0;
     display: inline-block;
     vertical-align: middle;
-   
+
 
     -moz-transition: all 1s ease;
     -webkit-transition: all 1s ease;
@@ -1168,8 +1168,8 @@ body {
 
 #resources {
     padding-top: 2em;
-    padding-bottom: 0;
-    overflow: hidden;
+    padding-bottom: 0em;
+
 }
 
 #resources .box {
@@ -1193,7 +1193,7 @@ body {
 }
 
 #resources.inactive .box {
-    bottom: -30em;
+  
 }
 
 /*********************************************************************************/
@@ -1252,6 +1252,7 @@ body {
     font-size: 0.9em;
 }
 
+
 /*********************************************************************************/
 /* Poptrox                                                                       */
 /*********************************************************************************/
@@ -1301,6 +1302,9 @@ body {
     text-align: center;
     top: 0;
     width: 2em;
+
+
+
 }
 
 .poptrox-popup .caption {
